@@ -84,8 +84,9 @@
 	</div>
 
 	<?php 
-	if ($_POST['pencarian'] =='') {
-		echo "<div style=\"float:left;\">";
+	if ($_POST['pencarian'] =='') { ?>
+		<div style="float:left;">
+		<?php
 		$jml = mysqli_num_rows(mysqli_query($con, $queryjml));
 		echo "Data Hasil Pencarian: <b>$jml</b>";
 		echo "</div>";
