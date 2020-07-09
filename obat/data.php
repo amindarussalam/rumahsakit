@@ -90,7 +90,7 @@
 		?>
 		</div>
 		<div style="float:right;">
-			<ul>
+			<ul class="pagination">
 				<?php 
 				$jml_hal = ceil($jml / $batas);
 				for ($i=1; $i <= $jml_hal; $i++) { 
