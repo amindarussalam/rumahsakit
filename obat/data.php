@@ -5,7 +5,7 @@
 		<small>Data Obat </small> 
 		<div class="pull-right">
 			<a href="" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-refresh"></i></a>
-			<a href="" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Tambah Data</a>
+			<a href="add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Tambah Data</a>
 		</div>	
 		</h4>
 		<div style="margin-bottom:20px;">
@@ -16,10 +16,8 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" arial-hidden="true"></span></button>
 			</div>
-				
-			</form>
-
-		</div>
+		</form>
+	</div>
 	<div class="table-table-responsive">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
@@ -46,23 +44,23 @@
 					if($pencarian != '') {
 						$sql = "SELECT * FROM tb_obat WHERE nama_obat LIKE '%$pencarian%'";
 						$query = $sql;
-						$queryjml = $sql;
+						$queryJml = $sql;
 					} else {
 						$query = "SELECT * FROM tb_obat LIMIT $posisi, $batas";
-						$queryjml = "SELECT * FROM tb_obat";
+						$queryJml = "SELECT * FROM tb_obat";
 						$no = $posisi + 1;
 					}
 				}else{
 						$query = "SELECT * FROM tb_obat LIMIT $posisi, $batas";
-						$queryjml = "SELECT * FROM tb_obat";
+						$queryJml = "SELECT * FROM tb_obat";
 						$no = $posisi + 1;
 					}
 
-				$sql_obat=mysqli_query($con, "$query") or die (mysqli_error($con));
+				$sql_obat=mysqli_query($con, $query) or die (mysqli_error($con));
 				if(mysqli_num_rows($sql_obat) > 0) {
 					while($data = mysqli_fetch_array($sql_obat)) { ?>
 						<tr>
-						<td><?=$no++ ?></td>
+						<td><?=$no++ ?>.</td>
 						<td><?=$data['nama_obat'] ?></td>
 						<td><?=$data['ket_obat'] ?></td>
 						<td class="text-center">
@@ -70,8 +68,8 @@
 						<a href="del.php?id=<?=$data['id_obat'] ?>" onclick="return confirm('apakah Yakin Akan Menghapus Data ini?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
 							
 						</td>
-						</tr>
-					<?php
+					</tr>
+				<?php
 					}
 
 				}else{
@@ -87,15 +85,9 @@
 	if ($_POST['pencarian'] =='') { ?>
 		<div style="float:left;">
 		<?php
-		$jml = mysqli_num_rows(mysqli_query($con, $queryjml));
+		$jml = mysqli_num_rows(mysqli_query($con, $queryJml));
 		echo "Data Hasil Pencarian: <b>$jml</b>";
-		echo "</div>";
-	} else { ?>
-		<div style="float: left;">
-		<?php 
-		$jml = mysqli_num_rows(mysqli_query($con, $queryjml));
-		echo "Jumlah Data: <b>$jml</b>";
-		 ?>			
+		?>
 		</div>
 		<div style="float:right;">
 			<ul>
@@ -103,7 +95,7 @@
 				$jml_hal = ceil($jml / $batas);
 				for ($i=1; $i <= $jml_hal; $i++) { 
 					if ($i != $hal) {
-						echo "<li><a href=\"?hal=$i\">$i</li>";
+						echo "<li><a href=\"?hal=$i\">$i</a></li>";
 					}else{
 						echo "<li class=\"active\"><a>$i</a></li>";
 					}
@@ -111,7 +103,15 @@
 				 ?>
 			</ul>
 		</div>
-	<?php } ?>
+		<?php
+	} else { 
+		echo "<div style=\"float:left;\">";
+		$jml = mysqli_num_rows(mysqli_query($con, $queryJml));
+		echo "Data Hasil Pencarian: <b>$jml</b>";
+		echo "</div>";
+	
+	}
+	 ?>
 	
 </div>	
 
