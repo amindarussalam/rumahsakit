@@ -48,7 +48,32 @@
 		</table>		
 	</div>
 </div>	
-<script type="text/javascript">
+<!--  <script src="../assets/js/bootstrap.min.js"></script> -->
+<!-- <script src="../assets/js/jquery.js"></script> -->
+<script>
+    $(document).ready(function() {
+        $('#select_all').on('click', function() {
+            if (this.checked) {
+                $('.check').each(function() {
+                    this.checked = true;
+                })
+            } else {
+                $('.check').each(function() {
+                    this.checked = false;
+                })
+            }
+        });
+
+        $('.check').on('click', function() {
+            if ($('.check:checked').length == $('.check').length) {
+                $('#select_all').prop('checked' ,true)
+            } else {
+                $('#select_all').prop('checked' ,false)
+            }
+        })
+    })
+</script>
+<!-- <script>
 	$(document).ready(function() {
 		$('#select_all').on('click', function() {
 			if(this.checked) {
@@ -71,5 +96,5 @@
 		})
 	})
 
-</script>
+</script> -->
 <?php include_once('../footer.php'); ?>
