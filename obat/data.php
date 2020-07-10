@@ -11,7 +11,7 @@
 		<div style="margin-bottom:20px;">
 			<form class="form-inline" action="" method="post">
 			<div class="form-group">
-				<input type="text" name="pencarian" class="form-control" placeholder="pencarian">	
+				<input type="text" name="pencarian" class="form-control" placeholder="pencarian" autocomplete="off" autofocus>	
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" arial-hidden="true"></span></button>
@@ -82,7 +82,7 @@
 	</div>
 
 	<?php 
-	if ($_POST['pencarian'] =='') { ?>
+	if (@$_POST['pencarian'] =='') { ?>
 		<div style="float:left;">
 		<?php
 		$jml = mysqli_num_rows(mysqli_query($con, $queryJml));
@@ -90,7 +90,7 @@
 		?>
 		</div>
 		<div style="float:right;">
-			<ul class="pagination">
+			<ul class="pagination pagination-sm" style="margin:0">
 				<?php 
 				$jml_hal = ceil($jml / $batas);
 				for ($i=1; $i <= $jml_hal; $i++) { 
