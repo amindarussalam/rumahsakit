@@ -2,7 +2,7 @@
 include "../header.php";
 // use Ramsey\Uuid\Uuid;
 
-// $uuid = Uuid::uuid4();
+// $uuid = Uuid::uuid4()toString();
 
 // printf(
 //     // "UUID: %s\nVersion: %d\n",
