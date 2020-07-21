@@ -5,11 +5,12 @@
 		<small>Data Poliklinik </small> 
 		<div class="pull-right">
 			<a href="" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-refresh"></i></a>
-			<a href="add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Tambah Poli</a>
+			<a href="generate.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Tambah Poli</a>
 		</div>	
 		</h4>
 		
 	</div>
+	<form method="post" name="proses">
 	<div class="table-table-responsive">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
@@ -27,7 +28,7 @@
 			<tbody>
 				<?php  
 				$no=1;
-				$sql_poli= mysqli_query($con, "SELECT * FROM tb_poliklinik") or die (mysqli_error($con));
+				$sql_poli= mysqli_query($con, "SELECT * FROM tb_poliklinik ORDER BY nama_poli ASC") or die (mysqli_error($con));
 				if(mysqli_num_rows($sql_poli) > 0 ){ 
 					while($data=mysqli_fetch_array($sql_poli)) { ?>
 					<tr>
@@ -47,6 +48,12 @@
 			</tbody>
 		</table>		
 	</div>
+</form>
+<div class="bo pull-right">
+	<button class="btn btn-warning btn-sm" onclick="edit()"> <i class="glyphicon glyphicon-edit"></i></i> Edit</button>
+	<button class="btn btn-danger btn-sm" onclick="hapus()"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
+</div>
+
 </div>	
 <!--  <script src="../assets/js/bootstrap.min.js"></script> -->
 <!-- <script src="../assets/js/jquery.js"></script> -->
@@ -72,6 +79,20 @@
             }
         })
     })
+
+    function edit() {
+    	document.proses.action = 'edit.php';
+    	document.proses.submit();
+    }
+
+    function hapus() {
+    	var conf = confirm('Yakin Akan Menghapus Data?');
+    	if(conf) {
+    	document.proses.action = 'del.php';	
+    	document.proses.submit();	
+    	}
+    	
+    }
 </script>
 <!-- <script>
 	$(document).ready(function() {
