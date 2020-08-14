@@ -20,11 +20,13 @@ if(!isset($_SESSION['user'])) {
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?=base_url('assets/css/simple-sidebar.css');?>" rel="stylesheet">
+    <link href="<?=base_url('assets/libs/DataTables/datatables.min.css');?>" rel="stylesheet">
     <!-- <link rel="icon" href="../assets/pkhplus.png"> -->
   </head>
 <body>
 	<script src="<?=base_url('assets/js/jquery.js')?>"></script>
     <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
+    <script src="<?=base_url('assets/libs/DataTables/datatables.min.js')?>"></script>
     <div id="wrapper">
 
         <!-- Sidebar -->

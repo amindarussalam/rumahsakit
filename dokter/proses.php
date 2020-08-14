@@ -17,13 +17,16 @@ if (isset($_POST['add'])) {
 									 ('$uuid','$nama','$spesialis','$alamat','$tlp')") or die (mysqli_error($con));
 	echo "<script>window.location='data.php';</script>";
 }else if(isset($_POST['edit'])){
-	// $id = $_POST['id'];
-	// $uuid = Uuid::uuid4()->toString();
-	// // $uuid = Uuid::uuid4()->toString;
-	// $nama = trim(mysqli_real_escape_string($con, $_POST['nama']));
-	// $ket = trim(mysqli_real_escape_string($con, $_POST['ket']));
-	// mysqli_query($con, "UPDATE tb_obat SET nama_obat = '$nama', ket_obat='$ket' WHERE id_obat='$id'") or die (mysqli_error($con));
-	// echo "<script>window.location='data.php';</script>";
+	$id = $_POST['id'];
+	$nama = trim(mysqli_real_escape_string($con, $_POST['nama']));
+    $spesialis = trim(mysqli_real_escape_string($con, $_POST['spesialis']));
+    $alamat = trim(mysqli_real_escape_string($con, $_POST['alamat']));
+    $tlp = trim(mysqli_real_escape_string($con, $_POST['tlp']));
+	mysqli_query($con, "UPDATE tb_dokter SET nama_dokter='$nama', 
+						spesialis='$spesialis',
+						alamat='$alamat', 
+						no_tlp='$tlp' WHERE id_dokter ='$id'") or die (mysqli_error($con));
+	echo "<script>window.location='data.php';</script>";
 
 }
 

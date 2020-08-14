@@ -12,7 +12,7 @@
 	</div>
 	<form method="post" name="proses">
 	<div class="table-table-responsive">
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table table-striped table-bordered table-hover" id="dokter">
 			<thead>
 				<tr>
                     <th>
@@ -44,7 +44,7 @@
                         <td><?=$data['alamat'] ?></td>	
                         <td><?=$data['no_tlp'] ?></td>	
                         <td align="center">
-                            <a href="edit.php" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="edit.php?id=<?=$data['id_dokter']?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                         </td>
 						
 					</tr>
@@ -64,7 +64,19 @@
 <!--  <script src="../assets/js/bootstrap.min.js"></script> -->
 <!-- <script src="../assets/js/jquery.js"></script> -->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {		
+   
+    $('#dokter').DataTable({
+		columnDefs:[
+			{
+				"searchable":false,
+				"orderable":false,
+				"targets":[0,6]
+			}
+		],
+		"order":[1,"asc"]
+	});
+
         $('#select_all').on('click', function() {
             if (this.checked) {
                 $('.check').each(function() {

@@ -31,7 +31,7 @@ include "../header.php";
 					</div> 
 					<div class="form-group">
 						<label for="alamat">Alamat</label>
-						<input  type="text" name="alamat" id="alamat" class="form-control" required>
+						<textarea name="alamat" id="alamat" class="form-control" required></textarea>
 					</div>
                     <div class="form-group">
 						<label for="tlp">No Tlp</label>
