@@ -2,9 +2,9 @@
 // setting default timezone 
 date_default_timezone_set('asia/jakarta');
 session_start();
-
+require_once "conn.php";
 //koneksi
-$con = mysqli_connect('localhost','root','','rumahsakit');
+$con = mysqli_connect($con['host'],$con['user'],$con['pass'],$con['db']);
 if(mysqli_connect_errno()){
 	echo mysqli_connect_error();
  
